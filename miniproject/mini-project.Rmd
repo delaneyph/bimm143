@@ -1,0 +1,6 @@
+---
+title: "Class 9 Mini Project"
+author: 'Delaney (PID: A15567985)'
+date: "2/10/2022"
+output: html_document
+---

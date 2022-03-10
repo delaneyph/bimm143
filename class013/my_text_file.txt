@@ -1,0 +1,5 @@
+ssh -i "bimm143_laneyp.pem" ubuntu@ec2-44-234-191-160.us-west-2.compute.amazonaws.com
+This is just a text editor.
+Hello again we can use the Control-Key to do stuff like save or exit. 
+ 
+i-0ad69fee6107ca2e9 

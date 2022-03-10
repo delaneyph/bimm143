@@ -1,0 +1,55 @@
+---
+title: "Find a Gene"
+author: 'Delaney (PID: A15567985)'
+date: "3/6/2022"
+output: html_document
+---
+
+```{r}
+muscle <- read.fasta("muscle.fst")
+muscle
+```
+
+```{r}
+library(bio3d)
+```
+
+```{r}
+seqmuscle <- seqidentity(muscle)
+```
+
+```{r}
+heatmap(seqmuscle, cexRow= 1, cexCol= 1)
+```
+
+```{r}
+con <- consensus(muscle, cutoff= 0.6)
+con
+```
+
+
+```{r}
+blast <- blast.pdb(con$seq)
+blast
+```
+
+```{r}
+pdb.annotate("2WQ9_A")
+```
+
+```{r}
+pdb.annotate("1HQB_A")
+```
+
+```{r}
+pdb.annotate("3FMZ_A")
+```
+
+```{r}
+pdb.annotate("1JYJ_A")
+```
+
+```{r}
+less ~/Downloads/2WQ9_A.pdb  
+```
+

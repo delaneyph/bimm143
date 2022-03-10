@@ -1,0 +1,61 @@
+---
+title: 'Class 10: Genome Informatics'
+author: 'Delaney (PID: A15567985)'
+date: "2/17/2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Examine 1000 Genome Data 
+
+>Q5: What proportion of the Mexican Ancestry in Los Angeles sample population (MXL) are homozygous for the asthma associated SNP (G|G)?
+
+```{r}
+# Read genotype file from Ensemble
+mxl <- read.csv("373531-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+table(mxl$Genotype..forward.strand.)/nrow(mxl)
+```
+
+What about a different population? Here we take the British in England and Scotland (GBR)
+```{r}
+gbr <- read.csv("373522-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+table(gbr$Genotype..forward.strand.)/nrow(gbr)
+```
+
+
+## Expression by Genotype Analysis
+
+I want to read my RNA-Seq expression results into R. This file is not a CSV but rather has fields seperated by space. 
+
+```{r}
+x <- read.table("geneexpression.txt")
+head(x)
+```
+
+First try at this question. Is the mean expression different based on genotype?
+```{r}
+x$geno == "G/G"
+```
+
+```{r}
+summary(x[x$geno == "G/G", 3])
+```
+
+Now we will look at other genotypes.
+```{r}
+summary(x[x$geno == "A/A", 3])
+```
+
+```{r}
+summary(x[x$geno == "A/G", 3])
+```
+
+## Make a summary overview figure 
+
+Make a boxplot figure...
+```{r}
+library(ggplot2)
+ggplot(x) + aes(geno, exp, fill=geno) + geom_boxplot(notch= TRUE)
+```
+
